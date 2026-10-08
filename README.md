@@ -12,7 +12,7 @@ with the kinds of files that come out of real reporting systems, not tidy CSVs.
 | File | Purpose |
 |------|---------|
 | `exercises.R` | The exercises with hints |
-| `solutions.R` | Commented solutions with expected outputs printed |
+| `solutions.R` | Commented solutions with expected outputs |
 | `data/medicare_hospital_costs.tsv` | Hospital charges, merged DRG column, metadata title line |
 | `data/employees_broken2.txt` | Semicolon-separated payroll export, metadata lines, messy fields |
 | `data/foreign_aid.tsv` | Country funding records with currency stored as text |
@@ -52,6 +52,18 @@ R 4.0 or newer with the tidyverse packages above.
   it into an empty string.
 - `separate()`, `str_trim()`, `str_remove()` and `case_when()` cover most of
   what messy real-world files need.
+
+## Validation
+
+Run from the repository root:
+
+```bash
+Rscript --vanilla tests/smoke.R
+```
+
+GitHub Actions runs the same checks on every pull request. The exercise file
+retains its practice tasks; automated checks run the completed solutions.
+To display each solution step interactively, use `source("solutions.R", echo = TRUE)`.
 
 ## License
 

@@ -1,8 +1,8 @@
 # =============================================================================
 # r-messy-data-import - SOLUTIONS
 # -----------------------------------------------------------------------------
-# Every step prints the expected result in a comment. Run the whole file:
-#   source("solutions.R")
+# Comments show the expected results. Display each step with:
+#   source("solutions.R", echo = TRUE)
 # Working directory must contain the data/ folder.
 # =============================================================================
 
@@ -139,7 +139,8 @@ tmp <- str_remove_all(aid$FundingAmount, "[$,USD ]")
 tmp <- ifelse(grepl("^\\(.*\\)$", tmp),
               paste0("-", str_remove_all(tmp, "[\\(\\)]")),
               tmp)
-#    Step 3: convert
+#    Step 3: mark the documented missing token, then convert
+tmp[tolower(tmp) == "n/a"] <- NA_character_
 aid$amount_num <- as.numeric(tmp)
 aid$amount_num                # [1]  1234567.0 200000.0 500000.0 320000.0 ...
                               # [7] -45000.0 12500000.0 2000000.0 ...
